@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export PYTHONPATH=$PYTHONPATH:/opt/www-cloud-fortress
+
+if ! $(ps aux|grep socat); then
+socat TCP4-LISTEN:8080,fork TCP6:[::1]:8080 &
+fi
+python3 ./test_server.py
