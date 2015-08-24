@@ -1,17 +1,12 @@
-from bottle import request, static_file
-from core import app, static_path
+import tornado.web
 
-@app.get('/')
-def app_index():
-    """Render home page"""
-    return static_file('app.index.html', root=static_path)
+from core import route
 
-@app.route('/assets/<file:path>', method='GET')
-def get_assets(file):
-    """Returns files from static assets directory"""
-    return static_file(file, root='{}/assets/'.format(static_path))
-
-@app.route('/app/<file:path>', method='GET')
-def get_app(file):
-    """Returns files from static app directory"""
-    return static_file(file, root='{}/static/app/'.format(base_path))
+# Static Assets
+route._routes.append(['/assets/(.*)', tornado.web.StaticFileHandler, {'path': 'core/static/assets/'}])
+route._routes.append(['/app/(.*)', tornado.web.StaticFileHandler, {'path': 'core/static/app/'}])
+@route('/')
+class HomePage (tornado.web.RequestHandler):
+    def get(self):
+        home = '\n'.join(open('core/static/app/app.index.html', 'r').readlines())
+        self.write(home)
