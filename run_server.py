@@ -1,15 +1,13 @@
-from aiobottle import AsyncBottle
-import aiohttp
-from bottle import jinja2_view, request
+import os
+import sys
 
-# Initialize aiobottle app
-app = AsyncBottle()
+# Change working directory so relative paths (and template lookup) work again
+os.chdir(os.path.dirname(__file__))
+# Add working directory to paths
+sys.path.append(os.path.dirname(__file__))
 
-@app.get('/')
-@jinja2_view('home.html', template_lookup=['views'])
-def home():
-    """Render home page"""
-    return {'env': str(request.environ)}
+from core import app
+from core.controllers import *
 
 def main(host='::', port=8080):
     """Start Bottle server"""
