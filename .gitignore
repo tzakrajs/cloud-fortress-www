@@ -1,1 +1,4 @@
 supervise/*
+*__pycache__*
+*.log
+ssl*
