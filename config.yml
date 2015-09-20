@@ -1,0 +1,29 @@
+general:
+  # hostname will be used for full URLs
+  hostname: 'www.cloud-fortress.com'
+  # ipv4 address to bind to
+  ipv4_ip: '0.0.0.0'
+  # ipv6 address to bind to
+  ipv6_ip: '::'
+
+non_ssl:
+  # should we run an http webserver?
+  enabled: true
+  # redirect http to https?
+  redirect: true
+  # port to listen on for http/ws
+  port: 8080
+  # external port to advertise http (useful for proxy or NAT)
+  external_port: 80
+
+ssl:
+  # should ssl be enabled?
+  enabled: true
+  # port to listen on for https/wss
+  port: 8443
+  # external port to advertise https (useful for proxy or NAT)
+  external_port: 443
+  # RSA key file for SSL encryption
+  key_path: ./ssl/cloud-fortress-com.key
+  # x509 certificate for SSL encryption
+  crt_path: ./ssl/cloud-fortress-com.crt
