@@ -23,7 +23,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
     def check_origin(self, origin):
         return True
 
-application = tornado.web.Application(route.get_routes(), {'some app': 'settings'})
+from core import logging, main_loop, route
 
 class RedirectToSSL(tornado.web.RequestHandler):
     def get(self, path):
