@@ -12,7 +12,6 @@ from core import logging, main_loop, route
 # YAML Config is located at the path below
 YAML_CONFIG_PATH = './config.yml'
 
-# Define https/wss server
 application = tornado.web.Application(route.get_routes())
 
 def generate_redirect_app(hostname='localhost', port=443):
@@ -48,7 +47,7 @@ if __name__ == "__main__":
     # Non SSL
     if non_ssl_config.get('enabled'):
         # Setup the http/ws server
-        if non_ssl_config.get('redirect_to_ssl'):
+        if non_ssl_config.get('redirect'):
             # This one only redirects to https, ws does not and cannot be
             # redirected since browsers disallow ws requests originating from
             # https websites
