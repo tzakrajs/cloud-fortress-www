@@ -10,7 +10,7 @@ non_ssl:
   # should we run an http webserver?
   enabled: true
   # redirect http to https?
-  redirect: true
+  redirect: false
   # port to listen on for http/ws
   port: 8080
   # external port to advertise http (useful for proxy or NAT)
@@ -18,7 +18,7 @@ non_ssl:
 
 ssl:
   # should ssl be enabled?
-  enabled: true
+  enabled: false
   # port to listen on for https/wss
   port: 8443
   # external port to advertise https (useful for proxy or NAT)
