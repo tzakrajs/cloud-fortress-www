@@ -2,3 +2,4 @@ supervise/*
 *__pycache__*
 *.log
 ssl*
+config.yml

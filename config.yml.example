@@ -1,10 +1,14 @@
 general:
   # hostname will be used for full URLs
-  hostname: 'www.cloud-fortress.com'
+  hostname: 'cloud-fortress.com'
   # ipv4 address to bind to
   ipv4_ip: '0.0.0.0'
   # ipv6 address to bind to
   ipv6_ip: '::'
+  # is traffic coming from a L7 load balancer or proxy?
+  l7_load_balancer: True
+  # header containing source IP
+  source_ip_header: 'X-Forwarded-For'
 
 non_ssl:
   # should we run an http webserver?
@@ -12,7 +16,7 @@ non_ssl:
   # redirect http to https?
   redirect: false
   # port to listen on for http/ws
-  port: 8080
+  port: 80
   # external port to advertise http (useful for proxy or NAT)
   external_port: 80
 
@@ -20,7 +24,7 @@ ssl:
   # should ssl be enabled?
   enabled: false
   # port to listen on for https/wss
-  port: 8443
+  port: 443
   # external port to advertise https (useful for proxy or NAT)
   external_port: 443
   # RSA key file for SSL encryption
