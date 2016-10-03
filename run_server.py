@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import socket
 import sys
 import tornado.httpserver
 import tornado.websocket
@@ -15,6 +16,8 @@ YAML_CONFIG_PATH = './config.yml'
 application = tornado.web.Application(route.get_routes())
 
 def generate_redirect_app(hostname='localhost', port=443):
+    if not hostname:
+        hostname = socket.getfqdn()
     if port == 443:
         host = hostname
     else:

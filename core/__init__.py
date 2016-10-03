@@ -1,4 +1,3 @@
-from aiobottle import AsyncBottle
 import logging
 import os
 import tornado.ioloop
